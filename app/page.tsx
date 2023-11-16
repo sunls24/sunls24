@@ -31,11 +31,11 @@ export default function Home() {
         <h3 className="pb-2 text-lg font-medium">Projects</h3>
         {projects.map((value, index) => {
           return (
-            <div key={index}>
+            <div key={index} className="group w-fit">
               <a
                 target="_blank"
                 href={`${githubURL}/${value.name}`}
-                className="mt-4 flex w-fit items-end leading-none underline underline-offset-4 transition-all hover:font-semibold"
+                className="mt-4 flex w-fit items-end leading-none underline underline-offset-4 transition-transform group-hover:-translate-y-0.5"
               >
                 {value.name}
                 <ArrowUpRightFromCircle
@@ -44,7 +44,7 @@ export default function Home() {
                   className="ml-1"
                 />
               </a>
-              <div className="mt-2 text-sm text-muted-foreground">
+              <div className="mt-1.5 text-sm text-muted-foreground transition-colors group-hover:text-foreground">
                 {value.desc}
               </div>
             </div>

@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import React from "react";
 import { Fira_Code } from "next/font/google";
+import { ThemeProvider } from "@/components/theme-provider";
 
 export const metadata: Metadata = {
   title: "sunls24",
@@ -15,7 +16,10 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 1,
-  themeColor: "#fff",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#FFF" },
+    { media: "(prefers-color-scheme: dark)", color: "#09090B" },
+  ],
 };
 
 const font = Fira_Code({ subsets: ["latin"] });
@@ -26,8 +30,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="zh" className={font.className}>
-      <body>{children}</body>
+    <html lang="zh" className={font.className} suppressHydrationWarning>
+      <body>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
