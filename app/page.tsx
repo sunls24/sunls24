@@ -1,8 +1,6 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { ArrowUpRightFromCircle, Github } from "lucide-react";
-import projects from "./projects.json";
-
-const githubURL = "https://github.com/sunls24";
+import config from "./config.json";
 
 export default function Home() {
   return (
@@ -18,8 +16,8 @@ export default function Home() {
         <div className="flex-1" />
         <a
           target="_blank"
-          href={githubURL}
-          className="flex items-end rounded-md p-1 text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+          href={config.github}
+          className="flex items-end rounded-md p-1.5 text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
         >
           <Github strokeWidth={1.8} size={20} />
           <span className="ml-1 leading-none underline underline-offset-2">
@@ -27,14 +25,14 @@ export default function Home() {
           </span>
         </a>
       </div>
-      <div>
+      <div className="mb-6">
         <h3 className="pb-2 text-lg font-medium">Projects</h3>
-        {projects.map((value, index) => {
+        {config.projects.map((value, index) => {
           return (
             <div key={index} className="group w-fit">
               <a
                 target="_blank"
-                href={`${githubURL}/${value.name}`}
+                href={`${config.github}/${value.name}`}
                 className="mt-4 flex w-fit items-end leading-none underline underline-offset-4 transition-transform group-hover:-translate-y-0.5"
               >
                 {value.name}
@@ -50,6 +48,12 @@ export default function Home() {
             </div>
           );
         })}
+      </div>
+      <div className="mb-6">
+        <h3 className="pb-2 text-lg font-medium">About me</h3>
+        <blockquote className="mt-4 whitespace-break-spaces border-l-4 pl-4 text-muted-foreground">
+          {config.about}
+        </blockquote>
       </div>
     </main>
   );
