@@ -2,7 +2,7 @@
   "github": "https://github.com/sunls24",
   "projects": [
     {
-      "name": "chat-ai",
+      "name": "nextai",
       "desc": "一个简单而优雅的 AI 聊天程序"
     },
     {
@@ -12,6 +12,10 @@
     {
       "name": "divination",
       "desc": "AI 算卦 - 根据六次硬币随机结果，生成卦象，并使用 AI 分析"
+    },
+    {
+      "name": "online-tools",
+      "desc": "在线工具箱"
     }
   ],
   "about": "There's nothing here."
