@@ -7,6 +7,7 @@ import { Analytics } from "@vercel/analytics/react";
 
 export const metadata: Metadata = {
   title: "sunls24",
+  description: "崇尚简约，少即是多，立志成为优秀的全栈工程师 💪",
   appleWebApp: {
     title: "sunls24",
   },

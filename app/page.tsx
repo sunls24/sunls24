@@ -10,7 +10,7 @@ export default function Home() {
     <main className="mx-auto w-[90%] max-w-3xl pt-10">
       <div className="mb-6 flex flex-col items-center border-b pb-4 sm:flex-row sm:items-end">
         <Avatar className="h-20 w-20">
-          <AvatarImage src="/icon.jpg" />
+          <AvatarImage src="/icon.webp" alt="icon" />
           <AvatarFallback>shuai</AvatarFallback>
         </Avatar>
         <span className="text-xl font-medium sm:ml-6">
