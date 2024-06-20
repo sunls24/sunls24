@@ -36,10 +36,10 @@ export const config: Config = {
       icon: "brain-circuit",
     },
     {
-      name: "online-tools",
-      desc: "在线工具箱 - Base64 / URL encode",
-      link: "https://tool.sunls.de",
-      icon: "drafting-compass",
+      name: "vidlp",
+      desc: "视频下载器 - 支持抖音/TikTok无水印，YouTube，BiliBili等视频下载",
+      link: "https://dl.sunls.de",
+      icon: "monitor-down",
     },
   ],
   links: [
@@ -63,5 +63,5 @@ export const config: Config = {
     },
   ],
   about:
-    "📮 邮箱：atob(bGl1c3MuenlAb3V0bG9vay5jb20=)\n\uD83D\uDCBB 技能：Golang / Python / JavaScript\n\uD83D\uDC33 容器：Docker / Kubernetes / Singularity\n\uD83D\uDC64 崇尚简约，少即是多，立志成为优秀的全栈工程师 💪",
+    "📮 邮箱：atob(c3VubHN4QG91dGxvb2suY29t)\n\uD83D\uDCBB 技能：Golang / Python / JavaScript\n\uD83D\uDC33 容器：Docker / Kubernetes / Operator\n\uD83D\uDC64 崇尚简约，少即是多，立志成为优秀的全栈工程师 💪",
 };

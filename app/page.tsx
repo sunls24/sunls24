@@ -39,7 +39,10 @@ export default function Home() {
               >
                 <Icon name={value.icon} size={16} className="mr-1" />
                 {value.name}
-                <ExternalLink size={15} className="ml-2" />
+                <ExternalLink
+                  size={15}
+                  className="ml-10 opacity-0 transition duration-300 group-hover:block group-hover:-translate-x-8 group-hover:opacity-100"
+                />
               </a>
               <div className="mt-2 text-sm text-muted-foreground transition-colors group-hover:text-foreground">
                 {value.desc}
