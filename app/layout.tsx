@@ -4,6 +4,7 @@ import React from "react";
 import { Roboto_Mono } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Analytics } from "@vercel/analytics/react";
+import Umami from "@/components/umami";
 
 export const metadata: Metadata = {
   title: "sunls24",
@@ -43,6 +44,7 @@ export default function RootLayout({
           {children}
         </ThemeProvider>
         {process.env.VERCEL && <Analytics />}
+        <Umami />
       </body>
     </html>
   );
