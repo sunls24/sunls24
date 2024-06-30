@@ -20,7 +20,7 @@ export const config: Config = {
     {
       name: "nextai",
       desc: "一个简单而优雅的 AI 聊天程序",
-      link: "https://nextai.sunls.de",
+      link: "https://next.sunls.de",
       icon: "sparkles",
     },
     {
