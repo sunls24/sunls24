@@ -2,7 +2,7 @@ import React from "react";
 
 function Footer() {
   return (
-    <footer className="mb-3 text-xs text-muted-foreground">
+    <footer className="mb-4 text-xs text-muted-foreground">
       Built by{" "}
       <a
         target="_blank"
