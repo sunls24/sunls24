@@ -1,0 +1,71 @@
+---
+import GridPattern from "@/components/magicui/grid-pattern"
+import Umami from "@/components/Umami.astro"
+import meta from "@/lib/meta"
+import { cn } from "@/lib/utils"
+import "@fontsource-variable/roboto-mono"
+
+interface Props {
+  title?: string
+  description?: string
+}
+
+const { title = meta.title, description = meta.description } = Astro.props
+const spacing = 25
+---
+
+<!doctype html>
+<html lang={meta.lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    {
+      meta.appleWebApp && (
+        <>
+          <meta name="apple-mobile-web-app-capable" content="yes" />
+          <meta name="apple-mobile-web-app-title" content={meta.appleWebApp} />
+          <meta
+            name="apple-mobile-web-app-status-bar-style"
+            content="default"
+          />
+        </>
+      )
+    }
+    {
+      meta.appleIcon && (
+        <link
+          rel="apple-touch-icon"
+          href={meta.appleIcon}
+          type="image/png"
+          sizes="180x180"
+        />
+      )
+    }
+    <meta
+      name="theme-color"
+      media="(prefers-color-scheme: light)"
+      content="#FFF"
+    />
+    <meta
+      name="theme-color"
+      media="(prefers-color-scheme: dark)"
+      content="#09090B"
+    />
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <title>{title}</title>
+  </head>
+  <body class="font-mono">
+    <slot />
+    <GridPattern
+      width={spacing}
+      height={spacing}
+      strokeDasharray={"4 2"}
+      className={cn(
+        "[mask-image:radial-gradient(circle_at_center,rgba(0,0,0,0.8),transparent)]"
+      )}
+    />
+    <Umami />
+  </body>
+</html>

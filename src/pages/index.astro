@@ -1,0 +1,125 @@
+---
+import Avatar from "@/components/Avatar"
+import Content from "@/components/Content.astro"
+import Footer from "@/components/Footer.astro"
+import Icon from "@/components/Icon"
+import { BorderBeam } from "@/components/magicui/border-beam"
+import ThemeIcon from "@/components/ThemeIcon.astro"
+import Layout from "@/layouts/Layout.astro"
+import { config } from "@/lib/config"
+import "@/styles/globals.css"
+import { ExternalLink, Github, Minus } from "lucide-react"
+---
+
+<Layout>
+  <main class="mx-auto w-[90%] max-w-3xl space-y-5 pb-5 pt-10">
+    <div
+      class="flex flex-col items-center border-b pb-4 sm:flex-row sm:items-end"
+    >
+      <Avatar client:load />
+      <span class="text-xl font-medium sm:ml-6"> Keep It Simple, Stupid. </span>
+      <div class="flex-1"></div>
+      <div class="flex">
+        <ThemeIcon />
+        <a
+          target="_blank"
+          href={config.github}
+          class="group flex items-end rounded-md p-1.5 text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+        >
+          <Github strokeWidth={1.8} size={20} />
+          <span
+            class="ml-1 leading-none underline-offset-2 group-hover:underline"
+          >
+            sunls24
+          </span>
+        </a>
+      </div>
+    </div>
+    <Content name="Projects">
+      {
+        config.projects.map((value) => {
+          return (
+            <div class="group relative w-fit rounded-md px-2 py-1 transition-colors duration-300 hover:bg-secondary">
+              <a
+                target="_blank"
+                href={value.link}
+                class="mt-2 flex w-fit items-end leading-none underline-offset-4 transition-transform group-hover:-translate-y-0.5 group-hover:underline"
+              >
+                <Icon name={value.icon} className="mr-1" size={16} />
+                {value.name}
+                <ExternalLink
+                  size={15}
+                  className="ml-10 opacity-0 transition duration-300 group-hover:block group-hover:-translate-x-8 group-hover:opacity-100"
+                />
+              </a>
+              <div class="mt-2 text-sm text-muted-foreground transition-colors group-hover:text-foreground">
+                {value.desc}
+              </div>
+              <BorderBeam
+                size={110}
+                duration={3}
+                colorFrom="#3b82f6"
+                colorTo="#4ade80"
+                className="opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+              />
+            </div>
+          )
+        })
+      }
+    </Content>
+    <Content name="Links">
+      {
+        config.links.map((value) => {
+          return (
+            <div class="group mt-3 flex w-fit items-center">
+              <a
+                target="_blank"
+                href={value.link}
+                class="flex w-fit min-w-[82px] items-end leading-none underline-offset-4 transition-transform group-hover:-translate-y-0.5 group-hover:underline"
+              >
+                <Icon name={value.icon} className="mr-2" size={16} />
+                {value.name}
+              </a>
+              <Minus size={20} className="mx-1" strokeWidth={1.6} />
+              <div class="text-sm text-muted-foreground transition-colors group-hover:text-foreground">
+                {value.desc}
+              </div>
+            </div>
+          )
+        })
+      }
+    </Content>
+    <Content name="About me">
+      <div
+        class="group relative w-fit rounded-r-md text-muted-foreground transition duration-300 hover:bg-secondary hover:text-foreground hover:shadow-lg"
+      >
+        <blockquote
+          class="mt-4 w-fit whitespace-break-spaces border-l-4 px-3 py-1.5 text-sm leading-6 sm:pr-5"
+          set:text={config.about.replace(/atob\(([^)]+)\)/g, (_, p1) =>
+            atob(p1.replace(/['"]+/g, ""))
+          )}
+        />
+        <BorderBeam
+          size={145}
+          duration={3}
+          colorFrom="#3b82f6"
+          colorTo="#4ade80"
+          className="opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+        />
+      </div>
+    </Content>
+    <Footer />
+  </main>
+</Layout>
+
+<script is:inline>
+  const theme = (() => {
+    if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
+      return localStorage.getItem("theme")
+    }
+    return window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light"
+  })()
+  document.documentElement.classList[theme == "dark" ? "add" : "remove"]("dark")
+</script>

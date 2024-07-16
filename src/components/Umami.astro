@@ -1,0 +1,18 @@
+---
+const src = import.meta.env.PUBLIC_UMAMI_URL
+const websiteId = import.meta.env.PUBLIC_UMAMI_ID
+const domains = import.meta.env.PUBLIC_UMAMI_DOMAINS
+---
+
+{
+  websiteId && (
+    <script
+      is:inline
+      defer
+      id="umami"
+      src={src}
+      data-website-id={websiteId}
+      data-domains={domains}
+    />
+  )
+}
