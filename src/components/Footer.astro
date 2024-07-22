@@ -1,13 +1,22 @@
-<footer class="text-xs text-muted-foreground">
-  Built by
-  <a
-    target="_blank"
-    href="https://astro.build"
-    class="font-medium underline underline-offset-2">Astro</a
-  >. The source code is available on
-  <a
-    target="_blank"
-    href="https://github.com/sunls24/sunls24"
-    class="font-medium underline underline-offset-2">Github</a
-  >.
+---
+import BlurFade from "@/components/magicui/blur-fade"
+import { FADE_DELAY } from "@/lib/constant"
+---
+
+<footer>
+  <BlurFade yOffset={8} duration={0.3} delay={FADE_DELAY * 4} client:load>
+    <div class="translate-y-2 text-xs text-muted-foreground">
+      Built by
+      <a
+        target="_blank"
+        href="https://astro.build"
+        class="font-medium underline underline-offset-2">Astro</a
+      >. The source code is available on
+      <a
+        target="_blank"
+        href="https://github.com/sunls24/sunls24"
+        class="font-medium underline underline-offset-2">Github</a
+      >.
+    </div>
+  </BlurFade>
 </footer>

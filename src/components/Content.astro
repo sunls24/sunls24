@@ -1,10 +1,22 @@
 ---
-const { name } = Astro.props
+import BlurFade from "@/components/magicui/blur-fade"
+import { FADE_DELAY } from "@/lib/constant"
+
+interface Props {
+  name: string
+  index: number
+}
+
+const { name, index } = Astro.props
 ---
 
 <div>
-  <h3 class="pb-2 text-lg font-medium underline underline-offset-4">
-    {name}
-  </h3>
-  <slot />
+  <BlurFade yOffset={8} duration={0.3} delay={FADE_DELAY * index} client:load>
+    <div class="translate-y-2">
+      <h3 class="pb-2 text-lg font-medium underline underline-offset-4">
+        {name}
+      </h3>
+      <slot />
+    </div>
+  </BlurFade>
 </div>

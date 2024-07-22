@@ -8,9 +8,14 @@ import "@fontsource-variable/roboto-mono"
 interface Props {
   title?: string
   description?: string
+  className?: string
 }
 
-const { title = meta.title, description = meta.description } = Astro.props
+const {
+  title = meta.title,
+  description = meta.description,
+  className,
+} = Astro.props
 const spacing = 25
 ---
 
@@ -56,9 +61,11 @@ const spacing = 25
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
     <title>{title}</title>
   </head>
-  <body class="font-mono">
+  <body class={cn("font-mono", className)}>
     <slot />
+    <Umami />
     <GridPattern
+      y="4"
       width={spacing}
       height={spacing}
       strokeDasharray={"4 2"}
@@ -66,6 +73,5 @@ const spacing = 25
         "[mask-image:radial-gradient(circle_at_center,rgba(0,0,0,0.8),transparent)]"
       )}
     />
-    <Umami />
   </body>
 </html>
