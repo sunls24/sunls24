@@ -1,6 +1,7 @@
 ---
 import GridPattern from "@/components/magicui/grid-pattern"
 import Umami from "@/components/Umami.astro"
+import { STATIC_OUTPUT } from "@/lib/constant"
 import meta from "@/lib/meta"
 import { cn } from "@/lib/utils"
 import "@fontsource-variable/roboto-mono"
@@ -63,9 +64,8 @@ const spacing = 25
   </head>
   <body class={cn("font-mono", className)}>
     <slot />
-    <Umami />
+    {STATIC_OUTPUT ? <Umami /> : <Umami server:defer />}
     <GridPattern
-      y="4"
       width={spacing}
       height={spacing}
       strokeDasharray={"4 2"}
