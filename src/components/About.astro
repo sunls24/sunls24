@@ -1,0 +1,26 @@
+---
+import ColorTwo from "@/components/ColorTwo.astro"
+import Skill from "@/components/Skill.astro"
+import { config } from "@/lib/config"
+import { Chrome, Package, RadioTower } from "lucide-react"
+---
+
+<div class="space-y-2 py-1">
+  <div
+    class="group relative flex w-fit items-center overflow-hidden rounded-md px-2 py-1 dark:text-primary-foreground"
+  >
+    <RadioTower size={18} />
+    <span class="ml-2 text-sm font-medium">
+      {config.about.me}
+    </span>
+    <ColorTwo />
+  </div>
+  <div class="flex flex-col gap-2 sm:flex-row">
+    <Skill label="后端:" , list={config.about.backend}>
+      <Package size={18} slot="icon" />
+    </Skill>
+    <Skill label="前端:" , list={config.about.frontend}>
+      <Chrome size={18} slot="icon" />
+    </Skill>
+  </div>
+</div>

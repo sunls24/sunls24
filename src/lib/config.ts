@@ -11,7 +11,7 @@ interface Config {
   github: string
   projects: Item[]
   links: Item[]
-  about: string
+  about: { mail: string; me: string; frontend: string[]; backend: string[] }
 }
 
 export const config: Config = {
@@ -50,6 +50,10 @@ export const config: Config = {
       icon: "Activity",
     },
   ],
-  about:
-    "📮 邮箱：atob(c3VubHN4QG91dGxvb2suY29t)\n\uD83D\uDCBB 技能：Golang / JavaScript / Python\n\uD83D\uDC33 容器：Docker / Kubernetes / Operator\n\uD83D\uDC64 崇尚简约，少即是多，立志成为优秀的云原生/全栈工程师 💪",
+  about: {
+    mail: "c3VubHN4QG91dGxvb2suY29t",
+    me: "崇尚简约，少即是多，立志成为优秀的云原生/全栈工程师 💪",
+    backend: ["Golang", "Python", "Docker", "Kubernetes", "Operator"],
+    frontend: ["TypeScript", "React", "Next.js", "Astro"],
+  },
 }

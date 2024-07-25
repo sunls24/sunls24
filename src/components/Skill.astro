@@ -1,0 +1,24 @@
+---
+import ColorOne from "@/components/ColorOne.astro"
+import { Badge } from "@/components/ui/badge"
+
+interface Props {
+  label: string
+  list: string[]
+}
+
+const { label, list } = Astro.props
+---
+
+<div
+  class="group relative w-fit overflow-hidden rounded-md border p-2 shadow transition duration-300 hover:border-transparent hover:shadow-none"
+>
+  <div class="mb-2 flex dark:group-hover:text-primary-foreground">
+    <slot name="icon" />
+    <span class="mx-1 text-sm font-medium">{label}</span>
+  </div>
+  <div class="flex flex-wrap gap-1">
+    {list.map((v) => <Badge>{v}</Badge>)}
+  </div>
+  <ColorOne />
+</div>

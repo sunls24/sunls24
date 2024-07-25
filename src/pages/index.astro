@@ -1,4 +1,5 @@
 ---
+import About from "@/components/About.astro"
 import Content from "@/components/Content.astro"
 import Footer from "@/components/Footer.astro"
 import Header from "@/components/Header.astro"
@@ -10,18 +11,18 @@ import "@/styles/globals.css"
 import { ExternalLink, Minus } from "lucide-react"
 ---
 
-<Layout className="mx-auto w-[90%] max-w-3xl pb-5 pt-10">
+<Layout className="mx-auto w-[90%] max-w-3xl py-5 sm:pt-10">
   <Header />
-  <main class="space-y-5">
+  <main class="space-y-4">
     <Content name="Projects" index={1}>
       {
         config.projects.map((value) => {
           return (
-            <div class="group relative w-fit rounded-md px-2 py-1 transition-colors duration-300 hover:bg-secondary">
+            <div class="group relative w-fit rounded-md px-2 pb-1 pt-2 transition-colors duration-300 hover:bg-secondary">
               <a
                 target="_blank"
                 href={value.link}
-                class="mt-2 flex w-fit items-end leading-none underline-offset-4 transition-transform group-hover:-translate-y-0.5 group-hover:underline"
+                class="flex w-fit items-end leading-none underline-offset-4 transition-transform group-hover:-translate-y-0.5 group-hover:underline"
               >
                 <Icon name={value.icon} className="mr-1" size={16} />
                 {value.name}
@@ -34,10 +35,10 @@ import { ExternalLink, Minus } from "lucide-react"
                 {value.desc}
               </div>
               <BorderBeam
-                size={110}
+                size={108}
                 duration={3}
-                colorFrom="#3b82f6"
-                colorTo="#4ade80"
+                colorFrom="#60a5fa"
+                colorTo="#facc15"
                 className="opacity-0 transition-opacity duration-300 group-hover:opacity-100"
               />
             </div>
@@ -49,7 +50,7 @@ import { ExternalLink, Minus } from "lucide-react"
       {
         config.links.map((value) => {
           return (
-            <div class="group mt-3 flex w-fit items-center">
+            <div class="group flex w-fit items-center py-1">
               <a
                 target="_blank"
                 href={value.link}
@@ -68,36 +69,8 @@ import { ExternalLink, Minus } from "lucide-react"
       }
     </Content>
     <Content name="About me" index={3}>
-      <div
-        class="group relative w-fit rounded-r-md text-muted-foreground transition duration-300 hover:bg-secondary hover:text-foreground hover:shadow-lg"
-      >
-        <blockquote
-          class="mt-4 w-fit whitespace-break-spaces border-l-4 px-3 py-1.5 text-sm leading-6 sm:pr-5"
-          set:text={config.about.replace(/atob\(([^)]+)\)/g, (_, p1) =>
-            atob(p1.replace(/['"]+/g, ""))
-          )}
-        />
-        <BorderBeam
-          size={145}
-          duration={3}
-          colorFrom="#3b82f6"
-          colorTo="#4ade80"
-          className="opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-        />
-      </div>
+      <About />
     </Content>
   </main>
   <Footer />
 </Layout>
-
-<script is:inline>
-  const theme = (() => {
-    if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
-      return localStorage.getItem("theme")
-    }
-    return window.matchMedia("(prefers-color-scheme: dark)").matches
-      ? "dark"
-      : "light"
-  })()
-  document.documentElement.classList[theme == "dark" ? "add" : "remove"]("dark")
-</script>

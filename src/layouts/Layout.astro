@@ -70,8 +70,20 @@ const spacing = 25
       height={spacing}
       strokeDasharray={"4 2"}
       className={cn(
-        "[mask-image:radial-gradient(circle_at_center,rgba(0,0,0,0.8),transparent)]"
+        "[mask-image:radial-gradient(circle_at_center,rgba(0,0,0,0.6),transparent)]"
       )}
     />
   </body>
 </html>
+
+<script is:inline>
+  const theme = (() => {
+    if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
+      return localStorage.getItem("theme")
+    }
+    return window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light"
+  })()
+  document.documentElement.classList[theme == "dark" ? "add" : "remove"]("dark")
+</script>
