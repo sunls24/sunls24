@@ -49,6 +49,12 @@ export const config: Config = {
       desc: "服务监控，看看挂了没",
       icon: "Activity",
     },
+    {
+      name: "WORKSPACE",
+      link: "/workspace",
+      desc: "工欲善其事，必先利其器",
+      icon: "PocketKnife",
+    },
   ],
   about: {
     mail: "c3VubHN4QG91dGxvb2suY29t",

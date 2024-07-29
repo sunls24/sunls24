@@ -2,9 +2,10 @@
 import GridPattern from "@/components/magicui/grid-pattern"
 import Umami from "@/components/Umami.astro"
 import { STATIC_OUTPUT } from "@/lib/constant"
-import meta from "@/lib/meta"
 import { cn } from "@/lib/utils"
+import meta from "@/lib/meta"
 import "@fontsource-variable/roboto-mono"
+import "@/styles/globals.css"
 
 interface Props {
   title?: string
@@ -62,7 +63,9 @@ const spacing = 25
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
     <title>{title}</title>
   </head>
-  <body class={cn("font-mono", className)}>
+  <body
+    class={cn("font-mono mx-auto w-[90%] max-w-3xl py-5 sm:pt-10", className)}
+  >
     <slot />
     {STATIC_OUTPUT ? <Umami /> : <Umami server:defer />}
     <GridPattern
