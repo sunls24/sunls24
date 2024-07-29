@@ -7,11 +7,10 @@ import Icon from "@/components/Icon"
 import { BorderBeam } from "@/components/magicui/border-beam"
 import Layout from "@/layouts/Layout.astro"
 import { config } from "@/lib/config"
-import "@/styles/globals.css"
 import { ExternalLink, Minus } from "lucide-react"
 ---
 
-<Layout className="mx-auto w-[90%] max-w-3xl py-5 sm:pt-10">
+<Layout>
   <Header />
   <main class="space-y-4">
     <Content name="Projects" index={1}>
@@ -52,7 +51,7 @@ import { ExternalLink, Minus } from "lucide-react"
           return (
             <div class="group flex w-fit items-center py-1">
               <a
-                target="_blank"
+                target={value.link.startsWith("/") ? "_self" : "_blank"}
                 href={value.link}
                 class="flex w-fit min-w-[82px] items-end leading-none underline-offset-4 transition-transform group-hover:-translate-y-0.5 group-hover:underline"
               >
