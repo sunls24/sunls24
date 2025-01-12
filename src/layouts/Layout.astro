@@ -1,7 +1,6 @@
 ---
 import GridPattern from "@/components/magicui/grid-pattern"
 import Umami from "@/components/Umami.astro"
-import { STATIC_OUTPUT } from "@/lib/constant"
 import { cn } from "@/lib/utils"
 import meta from "@/lib/meta"
 import "@fontsource-variable/roboto-mono"
@@ -67,7 +66,7 @@ const spacing = 25
     class={cn("font-mono mx-auto w-[90%] max-w-3xl py-5 sm:pt-10", className)}
   >
     <slot />
-    {STATIC_OUTPUT ? <Umami /> : <Umami server:defer />}
+    <Umami server:defer />
     <GridPattern
       width={spacing}
       height={spacing}

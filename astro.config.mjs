@@ -3,9 +3,6 @@ import react from "@astrojs/react"
 import tailwind from "@astrojs/tailwind"
 import { defineConfig } from "astro/config"
 
-const output = process.env.OUTPUT || "hybrid"
-console.log("OUTPUT:", output)
-
 // https://astro.build/config
 export default defineConfig({
   devToolbar: {
@@ -17,14 +14,7 @@ export default defineConfig({
       applyBaseStyles: false,
     }),
   ],
-  output: output,
-  adapter:
-    output === "static"
-      ? undefined
-      : node({
-          mode: "standalone",
-        }),
-  experimental: {
-    serverIslands: output !== "static",
-  },
+  adapter: node({
+    mode: "standalone",
+  }),
 })

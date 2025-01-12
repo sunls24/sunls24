@@ -1,0 +1,36 @@
+---
+import type { Software } from "../lib/software"
+import { clsx } from "clsx"
+import Icon from "@/components/Icon"
+import { Minus } from "lucide-react"
+
+interface Props {
+  list: Software[]
+}
+
+const { list } = Astro.props
+---
+
+<ul class="space-y-2 sm:space-y-1">
+  {
+    list.map((item) => (
+      <li class="flex flex-col sm:flex-row sm:items-center sm:gap-0.5">
+        <div class="flex items-center gap-2">
+          <Icon name={item.Icon} size={18} className="mr-1" />
+          <a class="font-medium text-blue-500" href={item.Link} target="_blank">
+            {item.Name}
+          </a>
+        </div>
+        <Minus strokeWidth={1.3} className="sm:block hidden rotate-90" />
+        <div class="flex items-center gap-1">
+          <span class={clsx(item.Strikethrough && "line-through")}>
+            {item.Description}
+          </span>
+          {item.Remark && (
+            <span class="ml-1 italic text-muted-foreground">{item.Remark}</span>
+          )}
+        </div>
+      </li>
+    ))
+  }
+</ul>

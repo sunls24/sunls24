@@ -1,8 +1,28 @@
 ---
 import Layout from "@/layouts/Layout.astro"
+import { software } from "../lib/software"
+import { Hash } from "lucide-react"
+import ItemTitle from "../components/ItemTitle.astro"
+import BlurFade from "../components/magicui/blur-fade"
+import Software from "../components/Software.astro"
+import { chrome } from "../lib/chrome"
 ---
 
 <Layout>
-  <h1 class="text-3xl font-bold">workspace</h1>
-  <p>TODO...</p>
+  <div class="pt-5">
+    <BlurFade yOffset={8} duration={0.3} client:load>
+      <h1 class="mb-6 flex translate-y-2 items-center text-xl font-bold">
+        <Hash size={22} />
+        工欲善其事，必先利其器
+      </h1>
+    </BlurFade>
+  </div>
+
+  <ItemTitle title="macOS 软件推荐" index={1}>
+    <Software list={software} />
+  </ItemTitle>
+  <ItemTitle title="Chrome 插件" index={3}>
+    <Software list={chrome} />
+  </ItemTitle>
+  <ItemTitle title="macOS 实用命令" index={2} />
 </Layout>

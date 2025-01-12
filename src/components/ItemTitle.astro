@@ -1,0 +1,25 @@
+---
+import Decorate from "./Decorate.astro"
+import { FADE_DELAY } from "../lib/constant"
+import BlurFade from "./magicui/blur-fade"
+
+const { title, index } = Astro.props
+---
+
+<div>
+  <BlurFade yOffset={8} duration={0.3} delay={FADE_DELAY * index} client:load>
+    <div
+      class="group mb-3 translate-y-2 rounded-lg border border-transparent p-2 transition-colors duration-700 hover:border-secondary hover:bg-blue-50/80 hover:shadow dark:hover:bg-secondary sm:w-fit sm:min-w-[500px] md:min-w-[555px]"
+    >
+      <div class="mb-2 flex gap-2">
+        <Decorate />
+        <h2
+          class="text-lg font-medium text-muted-foreground transition-colors duration-700 group-hover:text-foreground"
+        >
+          {title}
+        </h2>
+      </div>
+      <slot />
+    </div>
+  </BlurFade>
+</div>
