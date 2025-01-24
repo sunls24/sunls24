@@ -1,28 +1,26 @@
-FROM node:lts-alpine AS deps
+FROM node:lts-alpine AS node-builder
 WORKDIR /app
-COPY package.json pnpm-lock.yaml ./
-RUN apk add --no-cache gcompat && corepack enable pnpm && pnpm i --prod --frozen-lockfile
+ARG UMAMI_ID
+ARG UMAMI_URL
+ARG UMAMI_DOMAINS
 
-FROM deps AS builder
-WORKDIR /app
-RUN pnpm i
-COPY . .
+COPY ./web/package.json ./web/pnpm-lock.yaml ./
+ENV COREPACK_DEFAULT_TO_LATEST=0
+RUN apk add --no-cache gcompat && corepack enable pnpm && pnpm i --frozen-lockfile
+COPY ./web .
 RUN pnpm run build
+
+FROM golang:1.23-alpine AS builder
+WORKDIR /app
+COPY go.mod go.sum main.go ./
+COPY --from=node-builder /app/dist ./web/dist/
+RUN CGO_ENABLED=0 go build -ldflags '-s -w' -o main main.go
 
 FROM alpine AS runner
 WORKDIR /app
-RUN apk add --no-cache libstdc++ dumb-init \
-  && addgroup -g 1000 node && adduser -u 1000 -G node -s /bin/sh -D node \
-  && chown node:node ./
-COPY --from=builder /usr/local/bin/node /usr/local/bin/
-COPY --from=builder /usr/local/bin/docker-entrypoint.sh /usr/local/bin/
-ENTRYPOINT ["docker-entrypoint.sh"]
-USER node
+COPY --from=builder /app/main .
 
-COPY --from=deps /app/node_modules ./node_modules
-COPY --from=builder /app/dist ./dist
-
-ENV HOST 127.0.0.1
-ENV PORT 3000
+ENV HOST=127.0.0.1
+ENV PORT=3000
 EXPOSE 3000
-CMD dumb-init node ./dist/server/entry.mjs
+CMD ["/app/main"]

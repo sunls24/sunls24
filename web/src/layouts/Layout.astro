@@ -30,7 +30,7 @@ const spacing = 25
     {
       meta.appleWebApp && (
         <>
-          <meta name="apple-mobile-web-app-capable" content="yes" />
+          <meta name="mobile-web-app-capable" content="yes" />
           <meta name="apple-mobile-web-app-title" content={meta.appleWebApp} />
           <meta
             name="apple-mobile-web-app-status-bar-style"
@@ -66,7 +66,7 @@ const spacing = 25
     class={cn("font-mono mx-auto w-[90%] max-w-3xl py-5 sm:pt-10", className)}
   >
     <slot />
-    <Umami server:defer />
+    <Umami />
     <GridPattern
       width={spacing}
       height={spacing}
