@@ -1,8 +1,8 @@
 ---
-import type { Software } from "../lib/software"
-import { clsx } from "clsx"
 import Icon from "@/components/Icon"
+import { clsx } from "clsx"
 import { Minus } from "lucide-react"
+import type { Software } from "../lib/software"
 
 interface Props {
   list: Software[]
@@ -28,6 +28,11 @@ const { list } = Astro.props
           </span>
           {item.Remark && (
             <span class="ml-1 italic text-muted-foreground">{item.Remark}</span>
+          )}
+          {item.Command && (
+            <span class="rounded-md border-[0.5px] bg-yellow-50 px-1 text-muted-foreground dark:bg-secondary">
+              {item.Command}
+            </span>
           )}
         </div>
       </li>

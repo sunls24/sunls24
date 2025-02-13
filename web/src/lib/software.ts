@@ -5,6 +5,7 @@ export interface Software {
   Description: string
   Strikethrough?: boolean
   Remark?: string
+  Command?: string
 }
 
 export const software: Software[] = [
@@ -26,12 +27,17 @@ export const software: Software[] = [
     Link: "https://iterm2.com",
     Description: "现代化的终端，Terminal 的替代品",
   },
-
   {
     Name: "Zed",
     Icon: "FilePenLine",
     Link: "https://zed.dev",
     Description: "下一代代码编辑器，集成 AI，启动速度绝佳",
+  },
+  {
+    Name: "Visual Studio Code",
+    Icon: "CodeXml",
+    Link: "https://zed.dev",
+    Description: "轻量代码编辑器，插件扩展丰富",
   },
   {
     Name: "MacZip",

@@ -1,11 +1,13 @@
 ---
 import Layout from "@/layouts/Layout.astro"
-import { software } from "../lib/software"
+import { vscode } from "@/lib/vscode"
 import { Hash } from "lucide-react"
 import ItemTitle from "../components/ItemTitle.astro"
 import BlurFade from "../components/magicui/blur-fade"
 import Software from "../components/Software.astro"
 import { chrome } from "../lib/chrome"
+import { mac } from "../lib/mac"
+import { software } from "../lib/software"
 ---
 
 <Layout>
@@ -24,5 +26,10 @@ import { chrome } from "../lib/chrome"
   <ItemTitle title="Chrome 插件" index={3}>
     <Software list={chrome} />
   </ItemTitle>
-  <ItemTitle title="macOS 实用命令" index={2} />
+  <ItemTitle title="Visual Studio Code 插件" index={3}>
+    <Software list={vscode} />
+  </ItemTitle>
+  <ItemTitle title="macOS 实用命令" index={2}>
+    <Software list={mac} />
+  </ItemTitle>
 </Layout>
