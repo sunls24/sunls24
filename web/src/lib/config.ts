@@ -18,28 +18,28 @@ export const config: Config = {
   github: "https://github.com/sunls24",
   projects: [
     {
-      name: "nextai",
-      desc: "一个简单而优雅的 AI 聊天程序",
-      link: "https://next.sunls.de",
-      icon: "Sparkles",
-    },
-    {
-      name: "temporary-mail",
+      name: "tmail",
       desc: "临时邮箱 - 匿名的一次性邮箱",
       link: "https://mail.sunls.de",
       icon: "Mail",
     },
     {
       name: "divination",
-      desc: "AI 算卦 - 根据六次硬币随机结果，生成卦象，并使用 AI 分析",
+      desc: "AI 算卦 - 随机六次硬币结果，生成卦象，并使用 AI 解读",
       link: "https://divination.sunls.de",
       icon: "BrainCircuit",
     },
     {
-      name: "online-tools",
-      desc: "一款简洁高效的在线工具箱｜JSON 格式化，Crontab 时间计算，Base64 / URL 编解码",
+      name: "devtools",
+      desc: "简洁高效的在线工具箱｜JSON 格式化，Crontab 时间计算，Base64 / URL 编解码",
       link: "https://tool.sunls.de",
       icon: "DraftingCompass",
+    },
+    {
+      name: "nextai",
+      desc: "一个简单而优雅的 AI 聊天程序",
+      link: "https://next.sunls.de",
+      icon: "Sparkles",
     },
   ],
   links: [

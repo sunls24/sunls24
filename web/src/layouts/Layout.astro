@@ -1,6 +1,5 @@
 ---
 import GridPattern from "@/components/magicui/grid-pattern"
-import Umami from "@/components/Umami.astro"
 import { cn } from "@/lib/utils"
 import meta from "@/lib/meta"
 import "@fontsource-variable/roboto-mono"
@@ -60,13 +59,17 @@ const spacing = 25
       content="#09090B"
     />
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <script
+      is:inline
+      defer
+      src="https://static.cloudflareinsights.com/beacon.min.js"
+      data-cf-beacon='{"token": "82e9b6f424234f19a16c1bc554f3ca41"}'></script>
     <title>{title}</title>
   </head>
   <body
     class={cn("font-mono mx-auto w-[90%] max-w-3xl py-5 sm:pt-10", className)}
   >
     <slot />
-    <Umami />
     <GridPattern
       width={spacing}
       height={spacing}

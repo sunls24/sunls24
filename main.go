@@ -3,10 +3,11 @@ package main
 import (
 	"embed"
 	"fmt"
-	"github.com/labstack/echo/v4"
-	"github.com/labstack/echo/v4/middleware"
 	"log"
 	"os"
+
+	"github.com/labstack/echo/v4"
+	"github.com/labstack/echo/v4/middleware"
 )
 
 const defPort = "3000"
