@@ -1,0 +1,16 @@
+---
+import Fade from "@/components/Fade.astro"
+import { FADE_DELAY } from "@/lib/constant"
+
+interface Props {
+  name: string
+  index: number
+}
+
+const { name, index } = Astro.props
+---
+
+<Fade delay={FADE_DELAY * index}>
+  <h3 class="pb-3 text-lg font-medium underline underline-offset-4">{name}</h3>
+  <slot />
+</Fade>

@@ -1,0 +1,11 @@
+---
+interface Props {
+  delay?: number
+}
+
+const { delay = 0 } = Astro.props
+---
+
+<div class="animate-blur-fade" style={`animation-delay: ${delay.toFixed(2)}s`}>
+  <slot />
+</div>

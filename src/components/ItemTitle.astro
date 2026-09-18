@@ -1,0 +1,19 @@
+---
+import Decorate from "@/components/Decorate.astro"
+import Fade from "@/components/Fade.astro"
+import { FADE_DELAY } from "@/lib/constant"
+
+const { title, index } = Astro.props
+---
+
+<Fade delay={FADE_DELAY * index}>
+  <div class="group mb-3 rounded-lg border border-transparent p-2 transition-colors duration-700 hover:border-secondary hover:bg-blue-50/80 hover:shadow dark:hover:bg-secondary sm:w-fit sm:pr-8">
+    <div class="mb-2 flex gap-2">
+      <Decorate />
+      <h2 class="text-lg font-medium text-muted-foreground transition-colors duration-700 group-hover:text-foreground">
+        {title}
+      </h2>
+    </div>
+    <slot />
+  </div>
+</Fade>

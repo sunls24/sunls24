@@ -1,0 +1,88 @@
+---
+import GridPattern from "@/components/magicui/grid-pattern"
+import { cn } from "@/lib/utils"
+import meta from "@/lib/meta"
+import "@fontsource-variable/roboto-mono"
+import "@/styles/globals.css"
+
+interface Props {
+  title?: string
+  description?: string
+  className?: string
+}
+
+const {
+  title = meta.title,
+  description = meta.description,
+  className,
+} = Astro.props
+const spacing = 25
+---
+
+<!doctype html>
+<html lang={meta.lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    {meta.appleWebApp && (
+      <>
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-title" content={meta.appleWebApp} />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+      </>
+    )}
+    {meta.appleIcon && (
+      <link
+        rel="apple-touch-icon"
+        href={meta.appleIcon}
+        type="image/png"
+        sizes="180x180"
+      />
+    )}
+    <meta
+      name="theme-color"
+      media="(prefers-color-scheme: light)"
+      content="#FFF"
+    />
+    <meta
+      name="theme-color"
+      media="(prefers-color-scheme: dark)"
+      content="#09090B"
+    />
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <script
+      is:inline
+      defer
+      src="https://static.cloudflareinsights.com/beacon.min.js"
+      data-cf-beacon='{"token": "82e9b6f424234f19a16c1bc554f3ca41"}'
+    ></script>
+    <title>{title}</title>
+  </head>
+  <body
+    class={cn("font-mono mx-auto w-[90%] max-w-3xl py-5 sm:pt-10", className)}
+  >
+    <slot />
+    <GridPattern
+      width={spacing}
+      height={spacing}
+      strokeDasharray={"4 2"}
+      className={cn(
+        "[mask-image:radial-gradient(circle_at_center,rgba(0,0,0,0.6),transparent)]"
+      )}
+    />
+  </body>
+</html>
+
+<script is:inline>
+  const theme = (() => {
+    if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
+      return localStorage.getItem("theme")
+    }
+    return window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light"
+  })()
+  document.documentElement.classList[theme == "dark" ? "add" : "remove"]("dark")
+</script>

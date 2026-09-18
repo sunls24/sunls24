@@ -1,0 +1,35 @@
+---
+import Fade from "@/components/Fade.astro"
+import ItemTitle from "@/components/ItemTitle.astro"
+import Software from "@/components/Software.astro"
+import Layout from "@/layouts/Layout.astro"
+import { chrome } from "@/lib/chrome"
+import { mac } from "@/lib/mac"
+import { software } from "@/lib/software"
+import { vscode } from "@/lib/vscode"
+import { Hash } from "lucide-react"
+---
+
+<Layout>
+  <div class="pt-5">
+    <Fade>
+      <h1 class="mb-6 flex items-center text-2xl font-bold">
+        <Hash size={22} />
+        工欲善其事，必先利其器
+      </h1>
+    </Fade>
+  </div>
+
+  <ItemTitle title="macOS 软件推荐" index={1}>
+    <Software list={software} />
+  </ItemTitle>
+  <ItemTitle title="Chrome 插件" index={2}>
+    <Software list={chrome} />
+  </ItemTitle>
+  <ItemTitle title="Visual Studio Code 插件" index={3}>
+    <Software list={vscode} />
+  </ItemTitle>
+  <ItemTitle title="macOS 实用命令" index={4}>
+    <Software list={mac} />
+  </ItemTitle>
+</Layout>
